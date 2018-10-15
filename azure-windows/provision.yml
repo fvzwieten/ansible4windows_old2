@@ -7,7 +7,7 @@
     azure_subnet: subnet001
     azure_storage_account: ansibletowertest001
     azure_virtual_machine: towerdc01
-    azure_resource_group: ansigle_windows_rg
+    azure_resource_group: ansible_windows
     azure_vm_username: wsadmin01
     vault_azure_vm_password: r3dh4t1!
 
