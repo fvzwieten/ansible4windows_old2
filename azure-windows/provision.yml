@@ -7,6 +7,7 @@
     azure_subnet: subnet001
     azure_storage_account: ansibletowertest001
     azure_virtual_machine: towerdc01
+    azure_resource_group: ansigle_windows_rg
 
     # Below is UTF-16 Base64 encoding for:
     #   Invoke-Expression -Command ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1')); Enable-WSManCredSSP -Role Server -Force
