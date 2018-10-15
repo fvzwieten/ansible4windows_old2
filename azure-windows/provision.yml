@@ -19,7 +19,7 @@
   - name: create Azure resource group
     azure_rm_resourcegroup:
       name: '{{azure_resource_group}}'
-      location: australiaeast
+      location: westeurope
       state: present
 
   - name: create Azure virtual network in resource group
