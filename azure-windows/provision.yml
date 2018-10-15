@@ -57,7 +57,7 @@
       name: '{{azure_virtual_machine}}'
       resource_group: '{{azure_resource_group}}'
       state: present
-      vm_size: Standard_D1
+      vm_size: D2s_v3
       storage_account_name: '{{azure_storage_account}}'
       virtual_network_name: '{{azure_virtual_network}}'
       subnet_name: '{{azure_subnet}}'
