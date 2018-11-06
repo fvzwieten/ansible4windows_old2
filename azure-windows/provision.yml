@@ -17,7 +17,7 @@
 
   tasks:
   - debug:
-    var: subscription_id
+    msg: "subscription id: {{ subscription_id }}"
 
   - name: create Azure resource group
     azure_rm_resourcegroup:
