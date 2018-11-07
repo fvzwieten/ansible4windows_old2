@@ -31,6 +31,10 @@
       name: '{{azure_resource_group}}'
       location: westeurope
       state: present
+      subscription_id: "{{ lookup('env','AZURE_SUBSCRIPTION_ID') }}"
+      secret: "{{ lookup('env', 'AZURE_SECRET') }}"
+      tenant: "{{ lookup('env', 'AZURE_TENANT') }}"
+      client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
 
   - name: create Azure virtual network in resource group
     azure_rm_virtualnetwork:
