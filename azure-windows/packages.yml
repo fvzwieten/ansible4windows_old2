@@ -1,7 +1,5 @@
 ---
 - name: configure the Windows Server
-#  hosts: all
-
   tasks:
   - name: install common packages
     win_chocolatey:
