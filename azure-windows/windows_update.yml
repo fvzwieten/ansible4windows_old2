@@ -1,6 +1,10 @@
 ---
 - name: Check for critical updates and install them
   hosts: "{{ hostname }}"
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_server_cert_validation: ignore
+    ansible_winrm_transport: credssp
   tasks:
   - win_updates:
       category_names: criticalupdates
