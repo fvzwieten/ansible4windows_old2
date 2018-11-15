@@ -1,6 +1,10 @@
 ---
 - name: configure the Windows Server
   hosts: "{{ hostname }}"
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_server_cert_validation: ignore
+    ansible_winrm_transport: credssp
   tasks:
   - name: install common packages
     win_chocolatey:
