@@ -6,10 +6,10 @@
     azure_virtual_network: vnet001
     azure_subnet: subnet001
     azure_storage_account: ansibletowertest001
-    azure_virtual_machine: {{ vmname }}
+    azure_virtual_machine: "{{ vmname }}"
     azure_resource_group: ansible_windows
-    azure_vm_username: {{ username }}
-    vault_azure_vm_password: {{ password }}
+    azure_vm_username: "{{ username }}"
+    vault_azure_vm_password: "{{ password }}"
 
     # env vars come from credential when using Tower or manual set env vars when using ansible-playbook
     client_id: "{{ lookup('env','AZURE_CLIENT_ID') }}"
