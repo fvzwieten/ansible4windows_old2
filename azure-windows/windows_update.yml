@@ -1,5 +1,6 @@
-- name: windows_update
-  hosts: all
+---
+- name: Check for critical updates and install them
+  hosts: "{{ hostname }}"
   tasks:
   - win_updates:
       category_names: criticalupdates
