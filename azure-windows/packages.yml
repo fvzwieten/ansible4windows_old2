@@ -1,6 +1,6 @@
 ---
 - name: configure the Windows Server
-  hosts: all
+#  hosts: all
 
   tasks:
   - name: install common packages
