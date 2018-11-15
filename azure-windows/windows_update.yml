@@ -1,5 +1,5 @@
 ---
-- name: Check for critical updates and install them
+- name: Check for updates and install them
   hosts: "{{ hostname }}"
   vars:
     ansible_connection: winrm
@@ -7,7 +7,7 @@
     ansible_winrm_transport: credssp
   tasks:
   - win_updates:
-      category_names: CriticalUpdates
+      category_names: Updates
     register: wuout
     
   - win_reboot:
