@@ -1,6 +1,6 @@
 ---
 - name: configure the Windows Server
-  hosts: {{ hostname }}
+  hosts: "{{ hostname }}"
   tasks:
   - name: install common packages
     win_chocolatey:
