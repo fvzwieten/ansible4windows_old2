@@ -1,6 +1,6 @@
 ---
 - name: Check for updates and install them
-  hosts: "{{ hostname }}"
+  hosts: all
   vars:
     ansible_connection: winrm
     ansible_winrm_server_cert_validation: ignore
