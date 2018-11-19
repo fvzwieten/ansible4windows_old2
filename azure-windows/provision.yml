@@ -98,4 +98,5 @@
       name: '{{ azure_virtual_machine }}'
     register: azure_ip
 
-  - debug: var=azure_ip
+  - debug:
+      msg: "Public IP address is: {{ azure_ip }}"
