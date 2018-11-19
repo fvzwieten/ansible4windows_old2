@@ -95,7 +95,7 @@
   - name: Get Public IP
     azure_rm_publicipaddress_facts:
       resource_group: '{{ azure_resource_group }}'
-      name: '{{ azure_virtual_machine }}'
+#      name: '{{ azure_virtual_machine }}'
     register: azure_ip
 
   - debug:
