@@ -3,7 +3,6 @@
 
 - name: Install IIS
   hosts: webservers
-  gather_facts: false
   vars:
     azure_resource_group: "fred06_rg"
 
@@ -36,4 +35,4 @@
     win_reboot:
     when: win_feature.reboot_required
 
-  - debug: msg="{{ feature_name }}"
+  - debug: msg="{{ ansible_hostname }}"
