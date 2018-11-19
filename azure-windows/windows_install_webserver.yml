@@ -22,7 +22,7 @@
   # Update rules on existing security group
   - name: Open http(s) ports in azure
     azure_rm_securitygroup:
-      resource_group: {{ azure_resource_group }}
+      resource_group: "{{ azure_resource_group }}"
       name: mysecgroup
       rules:
           - name: http
