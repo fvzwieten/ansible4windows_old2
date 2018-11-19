@@ -98,4 +98,4 @@
       name: '{{ azure_virtual_machine }}'
     register: azure_ip
 
-  - debug: var=azure_ip verbosity=2
+  - debug: var=azure_ip
