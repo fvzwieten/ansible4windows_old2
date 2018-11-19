@@ -17,9 +17,29 @@
       include_management_tools: yes
     register: win_feature
 
-  - name: Disable Domain firewall
+  - name: Enable firewall
     win_firewall:
-      state: disabled
+      state: enabled
+
+  - name: Firewall rule to allow http on TCP port 80
+    win_firewall_rule:
+      name: http
+      localport: 80
+      action: allow
+      direction: in
+      protocol: tcp
+      state: present
+      enabled: yes
+
+  - name: Firewall rule to allow https on TCP port 443
+    win_firewall_rule:
+      name: http
+      localport: 443
+      action: allow
+      direction: in
+      protocol: tcp
+      state: present
+      enabled: yes
 
   - name: reboot if installing feature requires it
     win_reboot:
