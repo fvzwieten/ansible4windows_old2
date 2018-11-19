@@ -4,6 +4,10 @@
 - name: Install IIS
   hosts: webservers
   gather_facts: false
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_server_cert_validation: ignore
+    ansible_winrm_transport: credssp
   tasks:
 #    - include_vars: "{{ myvault }}"
     - name: Install IIS
