@@ -70,7 +70,7 @@
           protocol: Tcp
           destination_port_range: 443
           access: Allow
-          priority: 100
+          priority: 101
           direction: Inbound
           
   - name: provision new Azure virtual host
