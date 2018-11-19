@@ -2,7 +2,8 @@
 # This playbook installs and enables IIS on Windows hosts
 
 - name: Install IIS
-  hosts: webservers
+  hosts: localhost
+  connection: local
   vars:
 
     # env vars come from credential when using Tower or manual set env vars when using ansible-playbook
@@ -16,20 +17,6 @@
     ansible_winrm_transport: credssp
 
   tasks:
-  - name: Install Web-Server
-    win_feature:
-      name: Web-Server
-      state: present
-      include_sub_features: yes
-      include_management_tools: yes
-
-  - debug:
-      msg: "{{ ansible_hostname }}"
-      
-  - name: Disable Domain firewall
-    win_firewall:
-      state: disabled
-
   # Update rules on existing security group to open http(s) ports
   - name: Open http(s) ports in azure
     azure_rm_securitygroup:
@@ -52,6 +39,20 @@
           access: Allow
           priority: 1002
           direction: Inbound
+
+  hosts: webservers
+
+  tasks:
+  - name: Install Web-Server
+    win_feature:
+      name: Web-Server
+      state: present
+      include_sub_features: yes
+      include_management_tools: yes
+
+  - name: Disable Domain firewall
+    win_firewall:
+      state: disabled
 
   - name: reboot if installing feature requires it
     win_reboot:
