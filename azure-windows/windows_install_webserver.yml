@@ -31,6 +31,10 @@
   # Update rules on existing security group to open http(s) ports
   - name: Open http(s) ports in azure
     azure_rm_securitygroup:
+      subscription_id: "{{ subscription_id }}"
+      secret: "{{ secret }}"
+      tenant: "{{ tenant }}"
+      client_id: "{{ client_id }}"
       resource_group: "{{ ansible_hostname }}_ng"
       name: "{{ ansible_hostname }}01"
       rules:
