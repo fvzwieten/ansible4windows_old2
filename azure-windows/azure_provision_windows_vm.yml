@@ -58,7 +58,7 @@
   - name: Open http(s) ports in azure
     azure_rm_securitygroup:
       resource_group: "{{ azure_resource_group }}"
-      name: http
+      name: "{{ vm_name }}01"
       rules:
         - name: http
           protocol: Tcp
@@ -87,7 +87,7 @@
       resource_group: '{{azure_resource_group}}'
       state: present
       vm_size: Standard_B2s
-      open_ports: 80,443,3389
+#     open_ports: 80,443,3389
 #     storage_account_name: '{{azure_storage_account}}'
       virtual_network_name: '{{azure_virtual_network}}'
       subnet_name: '{{azure_subnet}}'
