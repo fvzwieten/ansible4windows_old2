@@ -1,0 +1,49 @@
+---
+- name: provision azure resources
+  hosts: localhost
+  connection: local
+  vars:
+    azure_virtual_network: vnet001
+    azure_subnet: subnet001
+    azure_storage_account: ansibletowertest001
+    azure_resource_group: ansible_windows
+
+    # env vars come from credential when using Tower or manual set env vars when using ansible-playbook
+    client_id: "{{ lookup('env','AZURE_CLIENT_ID') }}"
+    secret: "{{ lookup('env','AZURE_SECRET') }}"
+    subscription_id: "{{ lookup('env','AZURE_SUBSCRIPTION_ID') }}"
+    tenant: "{{ lookup('env','AZURE_TENANT') }}"
+    azure_cloud_environment: "{{ lookup('env','AZURE_CLOUD_ENVIRONMENT') }}"
+
+  tasks:
+  - name: create Azure resource group
+    azure_rm_resourcegroup:
+      name: '{{azure_resource_group}}'
+      location: westeurope
+      state: present
+      subscription_id: "{{ subscription_id }}"
+      secret: "{{ secret }}"
+      tenant: "{{ tenant }}"
+      client_id: "{{ client_id }}"
+
+  - name: create Azure virtual network in resource group
+    azure_rm_virtualnetwork:
+      name: '{{azure_virtual_network}}'
+      resource_group: '{{azure_resource_group}}'
+      address_prefixes_cidr:
+      - 10.1.0.0/16
+      state: present
+  
+  - name: create Azure subnet in virtualnetwork
+    azure_rm_subnet:
+      name: '{{azure_subnet}}'
+      state: present
+      virtual_network_name: '{{azure_virtual_network}}'
+      resource_group: '{{azure_resource_group}}'
+      address_prefix_cidr: 10.1.0.0/24
+
+  - name: create Azure storage account
+    azure_rm_storageaccount:
+      name: '{{azure_storage_account}}'
+      resource_group: '{{azure_resource_group}}'
+      account_type: Standard_LRS
