@@ -96,4 +96,4 @@
     register: azure_ip
 
   - debug:
-      msg: "{{ azure_ip.ansible_facts.azure_publicipaddresses.properties.ipAddress }}"
+      msg: "{{ azure_ip.ansible_facts.azure_publicipaddresses[0].properties.ipAddress }}"
