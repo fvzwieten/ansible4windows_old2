@@ -10,15 +10,30 @@
     ansible_winrm_server_cert_validation: ignore
     ansible_winrm_transport: credssp
   tasks:
+  # Update rules on existing security group
+  - name: Open http(s) ports in azure
+    azure_rm_securitygroup:
+      resource_group: {{ azure_resource_group }}
+      name: mysecgroup
+      rules:
+          - name: http
+            protocol: tcp
+            destination_port_range: 80
+            access: Allow
+            priority: 100
+            direction: Inbound
 #    - include_vars: "{{ myvault }}"
-    - name: Install "{{ feature_name }}"
-      win_feature:
-        name: "{{ feature_name }}"
-        state: present
-        include_sub_features: yes
-        include_management_tools: yes
-      register: win_feature
-    - name: reboot if installing feature requires it
-      win_reboot:
-      when: win_feature.reboot_required
-    - debug: msg="{{ feature_name }}"
+
+  - name: Install "{{ feature_name }}"
+     win_feature:
+       name: "{{ feature_name }}"
+       state: present
+       include_sub_features: yes
+       include_management_tools: yes
+     register: win_feature
+
+  - name: reboot if installing feature requires it
+     win_reboot:
+     when: win_feature.reboot_required
+
+  - debug: msg="{{ feature_name }}"
