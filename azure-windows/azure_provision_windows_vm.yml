@@ -3,11 +3,11 @@
   hosts: localhost
   connection: local
   vars:
-    azure_virtual_network: "{{ vm_name }}_network"
+    azure_virtual_network: "{{ vm_name }}"
     azure_subnet: "{{ vm_name }}_subnet"
-    azure_storage_account: "{{ vm_name }}_sa"
+    azure_storage_account: "{{ vm_name }}"
     azure_virtual_machine: "{{ vmname }}"
-    azure_resource_group: "{{ vm_name }}_rg"
+    azure_resource_group: "{{ vm_name }}"
     azure_vm_username: "{{ username }}"
     vault_azure_vm_password: "{{ password }}"
 
