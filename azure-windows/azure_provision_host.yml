@@ -1,5 +1,5 @@
 ---
-- name: provision new azure host
+- name: provision azure host
   hosts: localhost
   connection: local
   vars:
@@ -22,38 +22,6 @@
     winrm_enable_script: "Invoke-Expression -Command ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1')); Enable-WSManCredSSP -Role Server -Force"#    winrm_enable_script: SQBuAHYAbwBrAGUALQBFAHgAcAByAGUAcwBzAGkAbwBuACAALQBDAG8AbQBtAGEAbgBkACAAKAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABTAHkAcwB0AGUAbQAuAE4AZQB0AC4AVwBlAGIAQwBsAGkAZQBuAHQAKQAuAEQAbwB3AG4AbABvAGEAZABTAHQAcgBpAG4AZwAoACcAaAB0AHQAcABzADoALwAvAHIAYQB3AC4AZwBpAHQAaAB1AGIAdQBzAGUAcgBjAG8AbgB0AGUAbgB0AC4AYwBvAG0ALwBhAG4AcwBpAGIAbABlAC8AYQBuAHMAaQBiAGwAZQAvAGQAZQB2AGUAbAAvAGUAeABhAG0AcABsAGUAcwAvAHMAYwByAGkAcAB0AHMALwBDAG8AbgBmAGkAZwB1AHIAZQBSAGUAbQBvAHQAaQBuAGcARgBvAHIAQQBuAHMAaQBiAGwAZQAuAHAAcwAxACcAKQApADsAIABFAG4AYQBiAGwAZQAtAFcAUwBNAGEAbgBDAHIAZQBkAFMAUwBQACAALQBSAG8AbABlACAAUwBlAHIAdgBlAHIAIAAtAEYAbwByAGMAZQA=
 
   tasks:
-  - name: create Azure resource group
-    azure_rm_resourcegroup:
-      name: '{{azure_resource_group}}'
-      location: westeurope
-      state: present
-      subscription_id: "{{ subscription_id }}"
-      secret: "{{ secret }}"
-      tenant: "{{ tenant }}"
-      client_id: "{{ client_id }}"
-
-  - name: create Azure virtual network in resource group
-    azure_rm_virtualnetwork:
-      name: '{{azure_virtual_network}}'
-      resource_group: '{{azure_resource_group}}'
-      address_prefixes_cidr:
-      - 10.1.0.0/16
-      state: present
-  
-  - name: create Azure subnet in virtualnetwork
-    azure_rm_subnet:
-      name: '{{azure_subnet}}'
-      state: present
-      virtual_network_name: '{{azure_virtual_network}}'
-      resource_group: '{{azure_resource_group}}'
-      address_prefix_cidr: 10.1.0.0/24
-
-  - name: create Azure storage account
-    azure_rm_storageaccount:
-      name: '{{azure_storage_account}}'
-      resource_group: '{{azure_resource_group}}'
-      account_type: Standard_LRS
-
   - name: provision new Azure virtual host
     azure_rm_virtualmachine:
       admin_username: '{{azure_vm_username}}'
