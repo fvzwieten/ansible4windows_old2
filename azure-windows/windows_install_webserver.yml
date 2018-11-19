@@ -22,8 +22,10 @@
       state: present
       include_sub_features: yes
       include_management_tools: yes
-    register: win_feature
-    
+
+  - debug:
+      msg: "{{ tenant }}"
+      
   - name: Disable Domain firewall
     win_firewall:
       state: disabled
