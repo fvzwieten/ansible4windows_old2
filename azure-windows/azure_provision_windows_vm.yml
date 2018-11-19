@@ -5,9 +5,9 @@
   vars:
     azure_virtual_network: "{{ vm_name }}_network"
     azure_subnet: "{{ vm_name }}_subnet"
-    azure_storage_account: "{{ vm_name }}_storage_account"
+    azure_storage_account: "{{ vm_name }}_sa"
     azure_virtual_machine: "{{ vmname }}"
-    azure_resource_group: "{{ vm_name }}_resource_group"
+    azure_resource_group: "{{ vm_name }}_rg"
     azure_vm_username: "{{ username }}"
     vault_azure_vm_password: "{{ password }}"
 
