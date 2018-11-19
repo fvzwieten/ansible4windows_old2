@@ -58,11 +58,11 @@
   - name: Open http(s) ports in azure
     azure_rm_securitygroup:
       resource_group: "{{ azure_resource_group }}"
-      name: mysecgroup
+      name: http
       rules:
         - name: http
           protocol: Tcp
-          destination_port_range: 80
+          destination_port_range: 80,443
           access: Allow
           priority: 100
           direction: Inbound
