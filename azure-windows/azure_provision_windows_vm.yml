@@ -96,4 +96,4 @@
     register: azure_ip
 
   - debug:
-      msg: "Public IP address info: {{ azure_ip }}"
+      msg: "{{ azure_ip }}"
