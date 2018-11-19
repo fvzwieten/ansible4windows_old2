@@ -21,4 +21,4 @@
     - name: reboot if installing feature requires it
       win_reboot:
       when: win_feature.reboot_required
-- debug: msg="{{ feature_name }}"
+    - debug: msg="{{ feature_name }}"
