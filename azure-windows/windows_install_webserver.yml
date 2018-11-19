@@ -24,7 +24,7 @@
       include_management_tools: yes
 
   - debug:
-      msg: "{{ tenant }}"
+      msg: "{{ ansible_hostname }}"
       
   - name: Disable Domain firewall
     win_firewall:
