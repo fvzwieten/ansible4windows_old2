@@ -5,7 +5,7 @@
   hosts: webservers
   gather_facts: false
   vars:
-    azure_resource_group: "{{ vm_name }}_rg"
+    azure_resource_group: "fred06_rg"
 
     # env vars come from credential when using Tower or manual set env vars when using ansible-playbook
     client_id: "{{ lookup('env','AZURE_CLIENT_ID') }}"
