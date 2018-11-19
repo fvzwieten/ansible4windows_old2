@@ -7,7 +7,7 @@
     ansible_winrm_transport: credssp
   tasks:
   - win_updates:
-      category_names: Updates
+      category_names: CriticalUpdates
     register: wuout
     
   - win_reboot:
