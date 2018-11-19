@@ -11,7 +11,7 @@
     ansible_winrm_transport: credssp
   tasks:
 #    - include_vars: "{{ myvault }}"
-    - name: Install IIS
+    - name: Install "{{ feature_name ))"
       win_feature:
         name: "{{ feature_name }}"
         state: present
