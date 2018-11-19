@@ -92,4 +92,10 @@
       host: '{{azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.publicIPAddress.properties.ipAddress}}'
       timeout: 600
 
-  - debug: var=public_ip, verbosity=2
+  - name: Get Public IP
+    azure_rm_publicipaddress_facts:
+      resource_group: '{{ azure_resource_group }}'
+      name: '{{ azure_virtual_machine }}'
+    register: azure_ip
+
+  - debug: var=azure_ip verbosity=2
