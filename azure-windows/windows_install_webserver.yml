@@ -18,7 +18,7 @@
     ansible_winrm_server_cert_validation: ignore
     ansible_winrm_transport: credssp
 
-tasks:
+  tasks:
   # Update rules on existing security group
   - name: Open http(s) ports in azure
     azure_rm_securitygroup:
