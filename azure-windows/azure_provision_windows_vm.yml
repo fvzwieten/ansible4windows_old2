@@ -61,7 +61,7 @@
       name: mysecgroup
       rules:
         - name: http
-          protocol: tcp
+          protocol: Tcp
           destination_port_range: 80
           access: Allow
           priority: 100
