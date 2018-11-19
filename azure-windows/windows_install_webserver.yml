@@ -34,15 +34,15 @@
 #    - include_vars: "{{ myvault }}"
 
   - name: Install "{{ feature_name }}"
-     win_feature:
-       name: "{{ feature_name }}"
-       state: present
-       include_sub_features: yes
-       include_management_tools: yes
-     register: win_feature
+    win_feature:
+      name: "{{ feature_name }}"
+      state: present
+      include_sub_features: yes
+      include_management_tools: yes
+    register: win_feature
 
   - name: reboot if installing feature requires it
-     win_reboot:
-     when: win_feature.reboot_required
+    win_reboot:
+    when: win_feature.reboot_required
 
   - debug: msg="{{ feature_name }}"
