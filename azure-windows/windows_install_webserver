@@ -5,6 +5,7 @@
   hosts: webservers
   gather_facts: false
   vars:
+    feature_name: Web-Server
     ansible_connection: winrm
     ansible_winrm_server_cert_validation: ignore
     ansible_winrm_transport: credssp
