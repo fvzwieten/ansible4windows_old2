@@ -4,7 +4,6 @@
 - name: Install IIS
   hosts: webservers
   vars:
-    azure_resource_group: "fred06_rg"
 
     # env vars come from credential when using Tower or manual set env vars when using ansible-playbook
     client_id: "{{ lookup('env','AZURE_CLIENT_ID') }}"
@@ -12,15 +11,14 @@
     subscription_id: "{{ lookup('env','AZURE_SUBSCRIPTION_ID') }}"
     tenant: "{{ lookup('env','AZURE_TENANT') }}"
 
-    feature_name: Web-Server
     ansible_connection: winrm
     ansible_winrm_server_cert_validation: ignore
     ansible_winrm_transport: credssp
 
   tasks:
-  - name: Install "{{ feature_name }}"
+  - name: Install Web-Server
     win_feature:
-      name: "{{ feature_name }}"
+      name: Web-Server
       state: present
       include_sub_features: yes
       include_management_tools: yes
@@ -30,9 +28,26 @@
     win_firewall:
       state: disabled
 
+  # Update rules on existing security group to open http(s) ports
+  - name: Open http(s) ports in azure
+    azure_rm_securitygroup:
+      resource_group: "{{ ansible_hostname }}_ng"
+      name: "{{ ansible_hostname }}01"
+      rules:
+        - name: http
+          protocol: Tcp
+          destination_port_range: 80
+          access: Allow
+          priority: 1001
+          direction: Inbound
+        - name: https
+          protocol: Tcp
+          destination_port_range: 443
+          access: Allow
+          priority: 1002
+          direction: Inbound
 
   - name: reboot if installing feature requires it
     win_reboot:
     when: win_feature.reboot_required
-
-  - debug: msg="{{ ansible_hostname }}"
+    
