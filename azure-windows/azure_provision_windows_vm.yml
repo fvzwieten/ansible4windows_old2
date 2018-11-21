@@ -53,26 +53,7 @@
       name: '{{azure_storage_account}}'
       resource_group: '{{azure_resource_group}}'
       account_type: Standard_LRS
-
-  # Update rules on existing security group
-  - name: Open http(s) ports in azure
-    azure_rm_securitygroup:
-      resource_group: "{{ azure_resource_group }}"
-      name: "{{ vm_name }}01"
-      rules:
-        - name: http
-          protocol: Tcp
-          destination_port_range: 80
-          access: Allow
-          priority: 1001
-          direction: Inbound
-        - name: https
-          protocol: Tcp
-          destination_port_range: 443
-          access: Allow
-          priority: 1002
-          direction: Inbound
-          
+         
   - name: provision new Azure virtual host
     azure_rm_virtualmachine:
       admin_username: '{{azure_vm_username}}'
