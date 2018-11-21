@@ -64,7 +64,7 @@
         publisher: MicrosoftWindowsServer
         sku: 2016-Datacenter
         version: latest
-      name: '{{ item }}'
+      name: '{{ azure_virtual_machine }}'
       resource_group: '{{azure_resource_group}}'
       state: present
       vm_size: Standard_DS1_v2
