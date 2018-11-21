@@ -67,7 +67,7 @@
       name: '{{ item }}'
       resource_group: '{{azure_resource_group}}'
       state: present
-      vm_size: Standard_B2s
+      vm_size: Standard_DS1
       open_ports: 80,443,3389,5986
 #     storage_account_name: '{{azure_storage_account}}'
       virtual_network_name: '{{azure_virtual_network}}'
