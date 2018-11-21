@@ -83,7 +83,7 @@
         publisher: MicrosoftWindowsServer
         sku: 2016-Datacenter
         version: latest
-      name: '{{azure_virtual_machine}}'
+      name: '{{ item }}'
       resource_group: '{{azure_resource_group}}'
       state: present
       vm_size: Standard_B2s
@@ -91,6 +91,7 @@
 #     storage_account_name: '{{azure_storage_account}}'
       virtual_network_name: '{{azure_virtual_network}}'
       subnet_name: '{{azure_subnet}}'
+    with_sequence: start=1 end=60 stride=1 format={{ azure_virtual_machine }}%02x
 
   - name: create Azure vm extension to enable HTTPS WinRM listener
     azure_rm_virtualmachine_extension:
