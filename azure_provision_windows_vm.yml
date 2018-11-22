@@ -3,7 +3,7 @@
   hosts: localhost
   connection: local
   var_files:
-    - azure.yml
+    - azure_vars.yml
   vars:
     azure_virtual_network: "{{ vm_name }}"
     azure_subnet: "{{ vm_name }}"
@@ -12,13 +12,6 @@
     azure_resource_group: "{{ vm_name }}"
     azure_vm_username: "{{ username }}"
     azure_vm_password: "{{ password }}"
-
-    # env vars come from credential when using Tower or manual set env vars when using ansible-playbook
-    client_id: "{{ lookup('env','AZURE_CLIENT_ID') }}"
-    secret: "{{ lookup('env','AZURE_SECRET') }}"
-    subscription_id: "{{ lookup('env','AZURE_SUBSCRIPTION_ID') }}"
-    tenant: "{{ lookup('env','AZURE_TENANT') }}"
-    azure_cloud_environment: "{{ lookup('env','AZURE_CLOUD_ENVIRONMENT') }}"
 
     # script to run inside the VM when windows VM has been provisioned (aka cloud-init) 
     winrm_enable_script: "Invoke-Expression -Command ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1')); Enable-WSManCredSSP -Role Server -Force"#    winrm_enable_script: SQBuAHYAbwBrAGUALQBFAHgAcAByAGUAcwBzAGkAbwBuACAALQBDAG8AbQBtAGEAbgBkACAAKAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABTAHkAcwB0AGUAbQAuAE4AZQB0AC4AVwBlAGIAQwBsAGkAZQBuAHQAKQAuAEQAbwB3AG4AbABvAGEAZABTAHQAcgBpAG4AZwAoACcAaAB0AHQAcABzADoALwAvAHIAYQB3AC4AZwBpAHQAaAB1AGIAdQBzAGUAcgBjAG8AbgB0AGUAbgB0AC4AYwBvAG0ALwBhAG4AcwBpAGIAbABlAC8AYQBuAHMAaQBiAGwAZQAvAGQAZQB2AGUAbAAvAGUAeABhAG0AcABsAGUAcwAvAHMAYwByAGkAcAB0AHMALwBDAG8AbgBmAGkAZwB1AHIAZQBSAGUAbQBvAHQAaQBuAGcARgBvAHIAQQBuAHMAaQBiAGwAZQAuAHAAcwAxACcAKQApADsAIABFAG4AYQBiAGwAZQAtAFcAUwBNAGEAbgBDAHIAZQBkAFMAUwBQACAALQBSAG8AbABlACAAUwBlAHIAdgBlAHIAIAAtAEYAbwByAGMAZQA=
