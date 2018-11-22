@@ -3,7 +3,7 @@
 #  hosts: "{{ hostname }}"
   hosts: all
   vars_files:
-    - winrm.yml
+    - winrm_vars.yml
 
   tasks:
   - name: install common packages
