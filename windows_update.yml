@@ -1,10 +1,9 @@
 ---
 - name: Check for updates and install them
   hosts: all
-  vars:
-    ansible_connection: winrm
-    ansible_winrm_server_cert_validation: ignore
-    ansible_winrm_transport: credssp
+  vars_files:
+    - winrm_vars.yml
+
   tasks:
   - win_updates:
       category_names: CriticalUpdates
