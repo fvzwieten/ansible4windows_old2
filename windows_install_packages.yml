@@ -2,6 +2,8 @@
 - name: configure the Windows Server
 #  hosts: "{{ hostname }}"
   hosts: all
+  vars_files:
+    - winrm.yml
   vars:
     ansible_connection: winrm
     ansible_winrm_server_cert_validation: ignore
