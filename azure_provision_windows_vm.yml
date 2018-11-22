@@ -9,7 +9,7 @@
     azure_virtual_machine: "{{ vm_name }}"
     azure_resource_group: "{{ vm_name }}"
     azure_vm_username: "{{ username }}"
-    vault_azure_vm_password: "{{ password }}"
+    azure_vm_password: "{{ password }}"
 
     # env vars come from credential when using Tower or manual set env vars when using ansible-playbook
     client_id: "{{ lookup('env','AZURE_CLIENT_ID') }}"
@@ -57,7 +57,7 @@
   - name: provision new Azure virtual host
     azure_rm_virtualmachine:
       admin_username: '{{azure_vm_username}}'
-      admin_password: '{{vault_azure_vm_password}}'
+      admin_password: '{{azure_vm_password}}'
       os_type: Windows
       image:
         offer: WindowsServer
