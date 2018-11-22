@@ -73,7 +73,7 @@
 #      subnet_name: '{{azure_subnet}}'
       virtual_network_name: ansible-tower-vnet
       virtual_network_resource_group: ansible-tower
-      public_ip_allocation_method: Disabled
+#      public_ip_allocation_method: Disabled
 
   - name: create Azure vm extension to enable HTTPS WinRM listener
     azure_rm_virtualmachine_extension:
@@ -92,11 +92,11 @@
       host: '{{azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.privateIPAddress.properties.ipAddress}}'
       timeout: 600
 
-#  - name: Get Public IP
-#    azure_rm_publicipaddress_facts:
-#      resource_group: '{{ azure_resource_group }}'
-#      name: '{{ azure_virtual_machine }}01'
-#    register: azure_ip
-#
-#  - debug:
-#      msg: "Public IP: {{ azure_ip.ansible_facts.azure_publicipaddresses[0].properties.ipAddress }}"
+  - name: Get Public IP
+    azure_rm_publicipaddress_facts:
+      resource_group: '{{ azure_resource_group }}'
+      name: '{{ azure_virtual_machine }}01'
+    register: azure_ip
+
+  - debug:
+      msg: "Public IP: {{ azure_ip.ansible_facts.azure_publicipaddresses[0].properties.ipAddress }}"
