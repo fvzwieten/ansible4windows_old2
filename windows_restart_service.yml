@@ -1,5 +1,6 @@
 ---
 # restart a service
+- name: Restart a service
   hosts: all
   vars_files:
     - winrm_vars.yml
