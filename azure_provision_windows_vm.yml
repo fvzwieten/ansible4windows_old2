@@ -2,6 +2,8 @@
 - name: provision azure host
   hosts: localhost
   connection: local
+  var_files:
+    - azure.yml
   vars:
     azure_virtual_network: "{{ vm_name }}"
     azure_subnet: "{{ vm_name }}"
