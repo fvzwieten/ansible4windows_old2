@@ -3,11 +3,11 @@
   hosts: localhost
   connection: local
   vars:
-    azure_virtual_network: ansible_tower-vnet
-    azure_subnet: "{{ vm_name }}_sn"
+    azure_virtual_network: "{{ vm_name }}"
+    azure_subnet: "{{ vm_name }}"
     azure_storage_account: "{{ vm_name }}"
     azure_virtual_machine: "{{ vm_name }}"
-    azure_resource_group: ansible-workshop
+    azure_resource_group: "{{ vm_name }}"
     azure_vm_username: "{{ username }}"
     vault_azure_vm_password: "{{ password }}"
 
