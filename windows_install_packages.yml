@@ -1,6 +1,5 @@
 ---
-- name: configure the Windows Server
-#  hosts: "{{ hostname }}"
+- name: Install packages using chocolatey
   hosts: all
   vars_files:
     - winrm_vars.yml
