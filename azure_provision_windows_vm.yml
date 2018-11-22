@@ -2,7 +2,7 @@
 - name: provision azure host
   hosts: localhost
   connection: local
-  var_files:
+  vars_files:
     - azure_vars.yml
   vars:
     azure_virtual_network: "{{ vm_name }}"
