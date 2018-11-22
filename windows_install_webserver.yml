@@ -42,4 +42,9 @@
   - name: reboot if installing feature requires it
     win_reboot:
     when: win_feature.reboot_required
-    
+ 
+  - name: Download website to specified path
+    win_get_url:
+      url: 
+      dest: C:\inetpub\IISSite\index.html
+# C:\inetpub\IISSite\index.html
