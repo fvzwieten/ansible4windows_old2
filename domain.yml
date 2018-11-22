@@ -1,6 +1,10 @@
 ---
 - name: promote server to a Domain Controller
   hosts: all
+  vars:
+    ansible_connection: winrm
+    ansible_winrm_server_cert_validation: ignore
+    ansible_winrm_transport: credssp
 
   tasks:
   - name: create domain controllers
