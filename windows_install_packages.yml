@@ -4,10 +4,10 @@
   hosts: all
   vars_files:
     - winrm.yml
-  vars:
-    ansible_connection: winrm
-    ansible_winrm_server_cert_validation: ignore
-    ansible_winrm_transport: credssp
+#  vars:
+#    ansible_connection: winrm
+#    ansible_winrm_server_cert_validation: ignore
+#    ansible_winrm_transport: credssp
   tasks:
   - name: install common packages
     win_chocolatey:
