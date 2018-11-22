@@ -3,10 +3,8 @@
 
 - name: install IIS
   hosts: webservers
-  vars:
-    ansible_connection: winrm
-    ansible_winrm_server_cert_validation: ignore
-    ansible_winrm_transport: credssp
+  vars_files:
+    - winrm_vars.yml
 
   tasks:
   - name: Install Web-Server
