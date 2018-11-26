@@ -2,7 +2,7 @@
 # This playbook installs and enables IIS on Windows hosts
 
 - name: install IIS
-  hosts: webservers
+  hosts: all
   vars_files:
     - winrm_vars.yml
 
