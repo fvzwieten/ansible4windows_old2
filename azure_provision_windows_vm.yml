@@ -57,9 +57,6 @@
       open_ports: 80,443,3389,5986
       virtual_network_name: '{{azure_virtual_network}}'
       subnet_name: '{{azure_subnet}}'
-#      virtual_network_name: ansible-tower-vnet
-#      virtual_network_resource_group: ansible-tower
-#      public_ip_allocation_method: Disabled
 
   - name: create Azure vm extension to enable HTTPS WinRM listener
     azure_rm_virtualmachine_extension:
