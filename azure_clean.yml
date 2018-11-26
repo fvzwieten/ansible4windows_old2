@@ -2,11 +2,13 @@
 - name: cleanup the Azure resource group after test
   hosts: localhost
   connection: local
+  vars_files:
+    - azure_vars.yml
 
   tasks:
   - name: remove Azure resource group
     azure_rm_resourcegroup:
-      name: '{{azure_resource_group}}'
+      name: '{{ vm_name }}'
       location: westeurope
       state: absent
       force: yes
