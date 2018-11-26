@@ -1,0 +1,6 @@
+  - tasks:
+    win_domain_user:
+      name: somebody
+      upn: somebody@ansible.local
+      groups:
+        - Domain Admins
