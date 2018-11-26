@@ -7,7 +7,6 @@
   vars:
     azure_virtual_network: "{{ vm_name }}"
     azure_subnet: "{{ vm_name }}"
-    azure_storage_account: "{{ vm_name }}"
     azure_virtual_machine: "{{ vm_name }}"
     azure_resource_group: "{{ vm_name }}"
 
@@ -41,12 +40,6 @@
       resource_group: '{{azure_resource_group}}'
       address_prefix_cidr: 10.1.0.0/24
 
-  - name: create Azure storage account
-    azure_rm_storageaccount:
-      name: '{{azure_storage_account}}'
-      resource_group: '{{azure_resource_group}}'
-      account_type: Standard_LRS
-         
   - name: provision new Azure virtual host
     azure_rm_virtualmachine:
       admin_username: '{{admin_username}}'
@@ -84,12 +77,6 @@
       port: 5986
       host: '{{azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.publicIPAddress.properties.ipAddress}}'
       timeout: 600
-
-#  - name: wait for the WinRM port to come online
-#    wait_for:
-#      port: 5986
-#      host: '{{azure_vm.properties.networkProfile.networkInterfaces[0].properties.ipConfigurations[0].properties.privateIPAddress.properties.ipAddress}}'
-#      timeout: 600
 
   - name: Get Public IP
     azure_rm_publicipaddress_facts:
