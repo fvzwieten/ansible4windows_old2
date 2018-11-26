@@ -1,6 +1,12 @@
-  - tasks:
-    win_domain_user:
-      name: somebody
-      upn: somebody@ansible.local
-      groups:
-        - Domain Admins
+---
+- name: promote server to a Domain Controller
+  hosts: all
+  vars_files:
+    - winrm_vars.yml
+
+  tasks:
+  win_domain_user:
+    name: somebody
+    upn: somebody@ansible.local
+    groups:
+      - Domain Admins
