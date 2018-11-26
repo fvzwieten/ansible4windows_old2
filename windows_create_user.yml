@@ -10,4 +10,4 @@
       name: somebody
       upn: somebody@ansible.local
       groups:
-        - Domain Admins
+      - Domain Admins
