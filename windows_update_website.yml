@@ -1,5 +1,12 @@
 ---
+# This playbook updates the website on a webserver. The content comes from website.html
 
+- name: Refresh website
+  hosts: all
+  vars_files:
+    - winrm_vars.yml
+
+  tasks:
   - name: Download website to specified path
     win_get_url:
       url: https://gitlab.redhatworkshops.nl/wsadmin{x}/ansible4windows/raw/master/website.html
