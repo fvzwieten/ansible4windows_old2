@@ -1,0 +1,6 @@
+---
+
+  - name: Download website to specified path
+    win_get_url:
+      url: https://gitlab.redhatworkshops.nl/wsadmin{x}/ansible4windows/raw/master/website.html
+      dest: C:\inetpub\wwwroot\index.html
