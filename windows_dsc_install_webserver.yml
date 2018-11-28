@@ -1,7 +1,6 @@
 ---
 # This playbook installs and enables IIS on Windows hosts
-$ using DSC (Define State Configuration)
-
+# using DSC (Define State Configuration)
 - name: install IIS using DSC
   hosts: all
   vars_files:
