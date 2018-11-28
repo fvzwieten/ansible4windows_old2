@@ -1,6 +1,5 @@
 ---
 # This playbook updates the website on a webserver. The content comes from website.html
-
 - name: Refresh website
   hosts: all
   vars_files:
