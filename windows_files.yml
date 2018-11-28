@@ -14,3 +14,16 @@
       type: Directory
       destinationpath: C:\ansible\dsc-module
       ensure: present
+      
+  - name: Change ownership
+    win_owner:
+      path: C:\ansible
+      user: Administrator
+      recurse: true
+      
+  - name: set ACL's
+    win_acl:
+      path: C:\ansible
+      user: Users
+      rights: ReadAndExecute,Write,Delete
+      inherit: ContainerInherit,ObjectInherit
