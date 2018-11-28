@@ -27,5 +27,6 @@
     win_acl:
       path: C:\ansible
       user: Users
+      type: Allow
       rights: ReadAndExecute,Write,Delete
       inherit: ContainerInherit,ObjectInherit
