@@ -1,0 +1,21 @@
+---
+- name: install package
+  hosts: all
+  vars_files:
+    - winrm_vars.yml
+
+  tasks:
+  - name: Download package to specified path
+    win_get_url:
+      url: https://gitlab.redhatworkshops.nl/wsadmin70/ansible4windows/raw/master/putty-64bit-0.70-installer.msi
+      dest: C:\Windows\Temp\putty-64bit-0.70-installer.msi
+      
+  - name: install package
+    win_package:
+      path: C:\Windows\Temp\putty-64bit-0.70-installer.msi
+      state: present
+      
+  - name: Remove package file after installation
+    win_file:
+      path: C:\Windows\Temp\putty-64bit-0.70-installer.msi
+      state: absent
