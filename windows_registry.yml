@@ -1,0 +1,9 @@
+  - name: Create registry path MyCompany
+    win_regedit:
+      path: HKCU:\Software\MyCompany
+
+  - name: Add or update registry path MyCompany, with entry 'hello', and containing 'world'
+    win_regedit:
+      path: HKCU:\Software\MyCompany
+      name: hello
+      data: world
