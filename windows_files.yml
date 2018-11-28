@@ -1,6 +1,8 @@
 ---
 - name: manage files/directories
   hosts: all
+  vars_files:
+    - winrm_vars.yml
 
   tasks:
   - name: create directory with Ansible module
