@@ -2,6 +2,8 @@
 - name: setup user for become with Admin rights
   hosts: all
   become_method: runas
+  vars_files:
+    - winrm_vars.yml
 
   tasks:
   - name: setup user to become
