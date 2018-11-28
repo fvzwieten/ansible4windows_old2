@@ -24,7 +24,7 @@
   - name: setup web content
     win_dsc:
       resource_name: File
-      DestinationPath: C:\inetpub\IISSite\index.html
+      DestinationPath: C:\inetpub\wwwroot\index.html
       Type: File
       Contents: |
         <html>
@@ -38,7 +38,7 @@
       resource_name: xWebsite
       Name: NewIISSite
       State: Started
-      PhysicalPath: C:\inetpub\IISSite\index.html
+      PhysicalPath: C:\inetpub\wwwroot\index.html
       BindingInfo:
       - Protocol: https
         Port: 8443
