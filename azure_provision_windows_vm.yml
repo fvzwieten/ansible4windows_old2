@@ -51,8 +51,8 @@
         publisher: MicrosoftWindowsServer
         sku: 2016-Datacenter
         version: latest
-      name: '{{azure_resource_group}}'
-      resource_group: 'tower-workshop'
+      name: '{{azure_virtual_machine}}'
+      resource_group: '{{azure_resource_group}}'
       state: present
       vm_size: Standard_DS1_v2
       open_ports: 80,443,3389,5986
