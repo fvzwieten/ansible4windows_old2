@@ -14,6 +14,9 @@
     winrm_enable_script: "Invoke-Expression -Command ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1')); Enable-WSManCredSSP -Role Server -Force"
     
   tasks:
+  - debug:
+    msg: "{{ ansible_user_name[:2] }}"
+    
   - name: create Azure resource group
     azure_rm_resourcegroup:
       name: '{{azure_resource_group}}'
