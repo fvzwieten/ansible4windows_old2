@@ -7,7 +7,7 @@
   vars:
     azure_virtual_network: "AnsibleWorkshopVirtNet"
     azure_subnet: "AnsibleWorkshopSubNet"
-    azure_virtual_machine: "server-{{ tower_user_name }}"
+    azure_virtual_machine: "{{ vm_name }}"
     azure_resource_group: "AnsibleWorkshop"
 
     # script to run inside the VM when windows VM has been provisioned (aka cloud-init) 
