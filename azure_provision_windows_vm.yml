@@ -15,7 +15,7 @@
     
   tasks:
   - debug:
-      msg: "{{ ansible_user_name[:2] }}"
+      msg: "{{ tower_user_name[:2] }}"
     
   - name: create Azure resource group
     azure_rm_resourcegroup:
