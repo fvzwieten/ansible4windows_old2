@@ -45,5 +45,5 @@
  
   - name: Download website to specified path
     win_get_url:
-      url: https://gitlab.redhatworkshops.nl/fred/ansible4windows/raw/master/website.html
+      url: https://raw.githubusercontent.com/fvzwieten/ansible4windows/master/website.html
       dest: C:\inetpub\wwwroot\index.html
