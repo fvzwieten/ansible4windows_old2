@@ -17,7 +17,7 @@
     
   - name: create Azure resource group
     azure_rm_resourcegroup:
-      name: '{{azure_resource_group}}'
+      name: '{{ azure_resource_group }}'
       location: westeurope
       state: present
       subscription_id: "{{ subscription_id }}"
@@ -27,45 +27,46 @@
 
   - name: create Azure virtual network in resource group
     azure_rm_virtualnetwork:
-      name: '{{azure_virtual_network}}'
-      resource_group: '{{azure_resource_group}}'
+      name: '{{ azure_virtual_network }}'
+      resource_group: '{{ azure_resource_group }}'
       address_prefixes_cidr:
       - 10.1.0.0/16
       state: present
   
   - name: create Azure subnet in virtualnetwork
     azure_rm_subnet:
-      name: '{{azure_subnet}}'
+      name: '{{ azure_subnet }}'
       state: present
-      virtual_network_name: '{{azure_virtual_network}}'
-      resource_group: '{{azure_resource_group}}'
+      virtual_network_name: '{{ azure_virtual_network }}'
+      resource_group: '{{ azure_resource_group }}'
       address_prefix_cidr: 10.1.0.0/24
 
   - name: provision new Azure virtual host
     azure_rm_virtualmachine:
-      admin_username: '{{admin_username}}'
-      admin_password: '{{admin_password}}'
+      admin_username: '{{ admin_username }}'
+      admin_password: '{{ admin_password }}'
       os_type: Windows
       image:
         offer: WindowsServer
         publisher: MicrosoftWindowsServer
         sku: 2016-Datacenter
         version: latest
-      name: '{{azure_virtual_machine}}'
-      resource_group: '{{azure_resource_group}}'
+      name: '{{ azure_virtual_machine }}'
+      resource_group: '{{ azure_resource_group }}'
       state: present
       vm_size: Standard_DS1_v2
       open_ports: 80,443,3389,5986
-      virtual_network_name: '{{azure_virtual_network}}'
-      subnet_name: '{{azure_subnet}}'
+      virtual_network_name: '{{ azure_virtual_network }}'
+      subnet_name: '{{ azure_subnet }}'
       tags:
-          env: '{{env}}'
+          env: '{{ env }}'
+          user: '{{ tower_user_name }}'
 
   - name: create Azure vm extension to enable HTTPS WinRM listener
     azure_rm_virtualmachine_extension:
       name: winrm-extension
-      resource_group: '{{azure_resource_group}}'
-      virtual_machine_name: '{{azure_virtual_machine}}'
+      resource_group: '{{ azure_resource_group }}'
+      virtual_machine_name: '{{ azure_virtual_machine }}'
       publisher: Microsoft.Compute
       virtual_machine_extension_type: CustomScriptExtension
       type_handler_version: 1.9
