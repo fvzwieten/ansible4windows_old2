@@ -59,7 +59,7 @@
       virtual_network_name: '{{ azure_virtual_network }}'
       subnet_name: '{{ azure_subnet }}'
       tags:
-          env: '{{ env }}'
+          role: '{{ role }}'
           user: '{{ tower_user_name }}'
 
   - name: create Azure vm extension to enable HTTPS WinRM listener
