@@ -1,7 +1,7 @@
 ---
-# This playbook installs and enables IIS on Windows hosts
+# This playbook installs and enables IIS on Windows hosts with php and mysql support
 
-- name: install IIS
+- name: install IIS including php and mysql support
   hosts: all
   vars_files:
     - winrm_vars.yml
@@ -43,7 +43,7 @@
     win_reboot:
     when: win_feature.reboot_required
  
-  - name: Download website to specified path
-    win_get_url:
-      url: https://raw.githubusercontent.com/fvzwieten/ansible4windows/master/website.html
-      dest: C:\inetpub\wwwroot\index.html
+#  - name: Download website to specified path
+#    win_get_url:
+#      url: https://raw.githubusercontent.com/fvzwieten/ansible4windows/master/website.html
+#      dest: C:\inetpub\wwwroot\index.html
