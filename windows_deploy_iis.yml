@@ -38,6 +38,11 @@
       protocol: tcp
       state: present
       enabled: yes
+      
+  - name: install php
+    win_chocolatey:
+      name: 'php'
+      state: present
 
   - name: reboot if installing feature requires it
     win_reboot:
