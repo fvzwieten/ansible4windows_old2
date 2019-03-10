@@ -4,7 +4,7 @@
 # variables
 - name: join a server to a Domain
   remote_user: root
-  hosts: lin
+  hosts: linux
   vars_files:
     - join_domain_vars.yml
 
